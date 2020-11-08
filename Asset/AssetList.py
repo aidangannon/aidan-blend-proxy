@@ -1,11 +1,4 @@
-import Asset
-
-
-# region type aliases
-
-Asset = Asset.Asset.Asset
-
-# endregion
+from Asset.Asset import Asset
 
 
 class AssetList:
