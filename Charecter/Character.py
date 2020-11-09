@@ -1,5 +1,4 @@
-from bpy.types import Armature
-from bpy.types import Object as BlendObj
+from bpy.types import Collection as BlendCollection
 
 
 class Character:
@@ -10,13 +9,12 @@ class Character:
 
     def __init__(self):
         self.__file: str
-        self.__obj: Armature
-        self.__rig: BlendObj
+        self.__rig: BlendCollection
 
     # region blender api calls
 
     @staticmethod
-    def loadFromFile() -> 'Character':
+    def loadFromFile(file: str, collectionName: str) -> 'Character':
         """loads blender object from file"""
         raise NotImplementedError('not implemented')
 
@@ -28,11 +26,7 @@ class Character:
         self.__file = file
         return self
 
-    def __setObj(self, obj: BlendObj) -> 'Character':
-        self.__obj = obj
-        return self
-
-    def __setRig(self, rig: Armature) -> 'Character':
+    def __setRig(self, rig: BlendCollection) -> 'Character':
         self.__rig = rig
         return self
 
@@ -43,10 +37,7 @@ class Character:
     def getFile(self) -> str:
         return self.__file
 
-    def getObj(self) -> BlendObj:
-        return self.__obj
-
-    def getRig(self) -> Armature:
+    def getRig(self) -> BlendCollection:
         return self.__rig
 
     # endregion
