@@ -12,6 +12,12 @@ sys.path.append(os.getcwd())
 # endregion
 
 from Asset.Asset import Asset
+from Charecter.Character import Character
+from Scene.Scene import Scene
 from Conf import BlendSettings
+import bpy
 
-asset: Asset = Asset.loadFromFile(f"{BlendSettings['BlendFiles']['Path']}Worm", 'Worm')
+asset: Asset = Asset.loadFromFile(f"{BlendSettings['BlendFiles']['Path']}Cup", 'Cup')
+character: Character = Character.loadFromFile(f"{BlendSettings['BlendFiles']['Path']}Worm", 'Worm')
+
+scene: Scene = Scene.setUp().addAsset(asset).addChar(character)

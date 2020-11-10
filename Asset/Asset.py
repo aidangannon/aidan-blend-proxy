@@ -1,39 +1,34 @@
 from bpy.types import Object as BlendObj
 from bpy.types import Collection
-from bpy.types import BlendData
 import bpy
 
 
 class Asset:
-    """defines an project's assets
-
-    attributes: file, obj
     """
-
-    # init variables and set default values
-    def __init__(self):
-        """set default values"""
-
-        self.__file: str
-        self.__refObj: BlendObj
+    holds reference to blender asset
+    """
 
     # region blender api calls
 
     @staticmethod
     def loadFromFile(file: str, collectionName: str) -> 'Asset':
-        """loads blender object from file"""
+        """
+        loads blender object from file
+        and inits asset
+        """
 
         # reads collections from blend file
         # closes all resources as needed
+        # load the collection with the collection name specified
         with bpy.data.libraries.load(f'{file}.blend', link=True) as (data_from, data_to):
-            # load the collection with the collection name specified
             data_to.collections = [collectionName]
 
         # todo: avoid hardcode
         collectionToAdd: Collection = data_to.collections[0]
 
-        # creates a new empty, adds collection as it's instance collection
-        # the empty contains a reference to all the collection's data
+        # creates a new empty
+        # creates linked copy of collection
+        # links collection transform to empty
         refObj: BlendObj = bpy.data.objects.new(name=f"{collectionName}_Ref", object_data=None)
         refObj.instance_type = 'COLLECTION'
         refObj.instance_collection = collectionToAdd
@@ -43,9 +38,7 @@ class Asset:
         bpy.context.scene.collection.objects.link(refObj)
 
         # init and return asset
-        return Asset()\
-            .__setFile(file=file)\
-            .__setObj(refObj=refObj)
+        return Asset().__setFile(file=file).__setObj(refObj=refObj)
 
     # endregion
 

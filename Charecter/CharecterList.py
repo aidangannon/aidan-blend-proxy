@@ -2,10 +2,12 @@ from Charecter.Character import Character
 
 
 class CharacterList:
-    """defines an project's asset"""
+    """
+    hold reference to group of blender characters
+    """
 
     def __init__(self):
-        self.__chars: list
+        self.__setChars([])
 
     # region list methods
 
@@ -16,7 +18,7 @@ class CharacterList:
         assets.append(char)
         self.__setChars(assets)
 
-    # TODO: linear search
+    # todo: linear search
     def getByIndex(self, index: int) -> Character:
         """gets asset by index"""
 
@@ -25,7 +27,7 @@ class CharacterList:
         for char in self.getChars():
             if self.getChars().index(char) == index:
                 return char
-        raise IndexError('could not find charecter')
+        raise IndexError('could not find character')
 
     # endregion
 

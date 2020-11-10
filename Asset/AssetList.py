@@ -2,10 +2,12 @@ from Asset.Asset import Asset
 
 
 class AssetList:
-    """defines an project's asset"""
+    """
+    hold reference to group of blender assets
+    """
 
     def __init__(self):
-        self.__assets: list
+        self.__setAssets([])
 
     # region list methods
 
@@ -16,7 +18,7 @@ class AssetList:
         assets.append(asset)
         self.__setAssets(assets)
 
-    # TODO: linear search
+    # todo: linear search
     def getByIndex(self, index: int) -> Asset:
         """gets asset by index"""
 
