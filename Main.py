@@ -1,4 +1,4 @@
-# Where things run
+# where things run
 
 # region add main file for module imports
 
@@ -11,13 +11,20 @@ sys.path.append(os.getcwd())
 
 # endregion
 
-from Asset.Asset import Asset
-from Charecter.Character import Character
-from Scene.Scene import Scene
-from Conf import BlendSettings
-import bpy
+# region imports
 
-asset: Asset = Asset.loadFromFile(f"{BlendSettings['BlendFiles']['Path']}Cup", 'Cup')
-character: Character = Character.loadFromFile(f"{BlendSettings['BlendFiles']['Path']}Worm", 'Worm')
+from App.BuisnessLogic.Asset.Asset import Asset
+from App.BuisnessLogic.Charecter.Character import Character
+from App.BuisnessLogic.Scene.Scene import Scene
+from Conf import BlendSettings
+
+# endregion
+
+# todo: add subprocess wrapper
+# todo: add custom files
+pathToBlends: str = BlendSettings['BlendFiles']['Path']
+
+asset: Asset = Asset.loadFromFile(f"{pathToBlends}Cup", 'Cup')
+character: Character = Character.loadFromFile(f"{pathToBlends}Worm", 'Worm')
 
 scene: Scene = Scene.setUp().addAsset(asset).addChar(character)

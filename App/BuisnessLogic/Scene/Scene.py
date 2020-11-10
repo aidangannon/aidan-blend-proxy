@@ -1,8 +1,8 @@
 from bpy.types import Collection
-from Asset.AssetList import AssetList
-from Asset.Asset import Asset
-from Charecter.CharecterList import CharacterList
-from Charecter.Character import Character
+from App.Asset.AssetList import AssetList
+from App.Asset.Asset import Asset
+from App.Charecter.CharecterList import CharacterList
+from App.Charecter.Character import Character
 import bpy
 
 

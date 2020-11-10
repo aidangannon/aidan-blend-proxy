@@ -1,4 +1,4 @@
-from Asset.Asset import Asset
+from App.Asset.Asset import Asset
 
 
 class AssetList:

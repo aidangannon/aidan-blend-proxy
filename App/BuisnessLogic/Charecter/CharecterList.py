@@ -1,4 +1,4 @@
-from Charecter.Character import Character
+from App.Charecter.Character import Character
 
 
 class CharacterList:
