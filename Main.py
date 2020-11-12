@@ -16,7 +16,7 @@ sys.path.append(os.getcwd())
 from App.BuisnessLogic.Asset.Asset import Asset
 from App.BuisnessLogic.Charecter.Character import Character
 from App.BuisnessLogic.Scene.Scene import Scene
-from Conf import BlendSettings
+from AppSettings import BlendSettings
 
 # endregion
 
